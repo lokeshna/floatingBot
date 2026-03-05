@@ -23,9 +23,7 @@ app.MapPost("/api/agent/chat", async (ChatRequest request, WeatherAgentService a
 
 app.MapGet("/api/copilotkit/config", () =>
 {
-    const string defaultPublicApiKey = "ck_pub_3e541a2adcc6601e866f513c690961b1";
-
-    var publicApiKey = Environment.GetEnvironmentVariable("COPILOTKIT_PUBLIC_API_KEY") ?? defaultPublicApiKey;
+    var publicApiKey = Environment.GetEnvironmentVariable("COPILOTKIT_PUBLIC_API_KEY") ?? string.Empty;
     var agent = Environment.GetEnvironmentVariable("COPILOTKIT_AGENT") ?? "starter";
 
     return Results.Ok(new CopilotKitConfigResponse(publicApiKey, agent));

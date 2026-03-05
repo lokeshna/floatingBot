@@ -1,11 +1,21 @@
 # Floating Bot (.NET + CopilotKit)
 
-This repository contains a starter `.NET 8` web app in C# with a CopilotKit floating popup.
+This repository contains a starter `.NET 8` web app in C# with:
+
+- A **floating CopilotKit chat UI** (`CopilotPopup`) when CopilotKit cloud config is present.
+- A **local floating fallback bot** that talks to a C# endpoint when CopilotKit key is not set.
+- A sample C# chat endpoint (`/api/agent/chat`) for local starter logic.
+
+## Project structure
+
+- `src/FloatingBot/Program.cs` — ASP.NET Core host + API endpoints.
+- `src/FloatingBot/Services/WeatherAgentService.cs` — starter C# agent behavior.
+- `src/FloatingBot/wwwroot/app.js` — CopilotKit + local fallback floating bot UI.
 
 ## Run locally
 
 1. Install .NET 8 SDK.
-2. (Optional) Override CopilotKit values:
+2. Optional CopilotKit cloud values:
 
    ```bash
    export COPILOTKIT_PUBLIC_API_KEY="your_public_key"
@@ -20,13 +30,11 @@ This repository contains a starter `.NET 8` web app in C# with a CopilotKit floa
 
 4. Open the local URL shown in output.
 
-## CopilotKit key behavior
-
-- The frontend is configured with a default public key so the floating popup appears immediately.
-- If `/api/copilotkit/config` is available, the app uses server-provided values (env vars) and falls back to the default key only when missing.
+If `COPILOTKIT_PUBLIC_API_KEY` is missing, the app automatically uses a local fallback floating bot so chat still works during development.
 
 ## Push to GitHub
 
 ```bash
+git remote add origin https://github.com/lokeshna/floatingBot.git
 git push -u origin work
 ```

@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "FloatingBot": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "COPILOTKIT_PUBLIC_API_KEY": "ck_pub_3e541a2adcc6601e866f513c690961b1",
+        "COPILOTKIT_AGENT": "starter"
+      },
+      "applicationUrl": "https://localhost:61917;http://localhost:61918"
+    }
+  }
+}
